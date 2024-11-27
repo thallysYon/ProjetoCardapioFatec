@@ -1,1 +1,3 @@
-Matheus Gabriel, Reginaldo Gabarra, Thallys Yon, João Poscai e João Casagrand
+Projeto feito para a matéria de programação para internet.
+
+Alunos: Matheus Gabriel, Reginaldo Gabarra, Thallys Yon, João Poscai e João Casagrand
