@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProjetoCardapio.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Lista de Pedidos";
+}
+
+
+<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+
+    <a href="#" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <i class="bi bi-card-checklist me-3 fs-1"></i>
+        <span class="fs-5 fw-semibold">Pedidos recentes</span>
+    </a>
+    <p>
+        <a asp-action="Create" class="btn btn-outline-dark mt-3">Novo Pedido</a>
+    </p>
+    @foreach (var pedido in Model)
+    {
+    <div class="list-group list-group-flush border-bottom scrollarea">
+
+        <div href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+
+            <div class="d-flex w-100 align-items-center justify-content-between">
+
+                    <strong class="mb-1">Cliente: @pedido.Cliente?.NomeDoCliente</strong>
+                    <small>ID: @pedido.Id - Data: @pedido.Data.ToShortDateString()</small>
+
+                    
+                    
+            </div>
+
+                <div class="col-10 mb-1 small">
+                    <a asp-action="Details" asp-route-id="@pedido.Id" class="me-3">Detalhes</a>
+                    <a asp-action="Edit" asp-route-id="@pedido.Id" class="me-3">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@pedido.Id" class="me-3">Deletar</a>
+                </div>
+
+                
+                
+                
+
+        </div>  
+    </div>
+    }
+</div>
+
+
+
+  
+        

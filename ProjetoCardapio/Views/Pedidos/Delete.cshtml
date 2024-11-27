@@ -1,0 +1,57 @@
+﻿@model ProjetoCardapio.Models.Pedido
+
+@{
+    ViewData["Title"] = "Deletar Pedido";
+}
+
+<div class="container mt-5">
+    <h1 class="display-5 text-center">Deletar Pedido</h1>
+    <div class="alert alert-danger text-center" role="alert">
+        Tem certeza que deseja deletar o pedido <strong>#@Model.Id</strong>? Essa ação não pode ser desfeita.
+    </div>
+
+    <div class="card col-12 mb-3">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Cliente:</strong> @Model.Cliente?.NomeDoCliente</li>
+            <li class="list-group-item"><strong>Mesa:</strong> @Model.Cliente?.NumeroDaMesa</li>
+            <li class="list-group-item"><strong>Data do Pedido:</strong> @Model.Data.ToLongDateString()</li>
+            <li class="list-group-item"><strong>Total:</strong> R$ @Model.Total</li>
+        </ul>
+    </div>
+
+    <div class="card col-12 mb-3">
+        <div class="card-header fw-bolder">
+            Itens do Pedido
+        </div>
+        @if (Model.PedidosPratos != null && Model.PedidosPratos.Any())
+        {
+            <ul class="list-group list-group-flush">
+                @foreach (var pedidoPrato in Model.PedidosPratos)
+                {
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Prato:</strong> @pedidoPrato.Prato.NomeDoPrato<br />
+                                <strong>Quantidade:</strong> @pedidoPrato.Quantidade<br />
+                                <strong>Preço Unitário:</strong> R$ @pedidoPrato.Prato.Preco<br />
+                                <strong>Preço Total do Item:</strong> R$ @(pedidoPrato.Quantidade * pedidoPrato.Prato.Preco)
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="text-muted text-center">Nenhum prato associado a este pedido.</p>
+        }
+    </div>
+
+    <div class="mt-4 text-center">
+        <form asp-action="Delete" method="post" class="d-inline">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</div>

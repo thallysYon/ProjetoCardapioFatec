@@ -1,0 +1,31 @@
+﻿@model ProjetoCardapio.Models.Prato
+
+@{
+    ViewData["Title"] = "Excluir Prato";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card">
+        @if (!string.IsNullOrEmpty(Model.ImagemUrl))
+        {
+            <img src="@Model.ImagemUrl" class="card-img-top" alt="Imagem do prato" style="height: 150px; object-fit: cover;">
+        }
+        else
+        {
+            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do prato" style="height: 150px; object-fit: cover;">
+        }
+        <div class="card-body text-center">
+            <div class="alert alert-danger text-center" role="alert">
+                Você está prestes a excluir este prato! Essa ação não pode ser desfeita.
+            </div>
+            <h5 class="card-title text-danger">Deseja realmente excluir este prato?</h5>
+            <p><strong>Nome:</strong> @Model.NomeDoPrato</p>
+            <p><strong>Preço:</strong> R$ @Model.Preco.ToString("F2")</p>
+            <p><strong>Descrição:</strong> @Model.Descricao</p>
+            <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                <button type="submit" class="btn btn-danger">Excluir</button>
+                <a href="@Url.Action("Index", "Pratos")" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>

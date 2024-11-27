@@ -1,0 +1,32 @@
+﻿@model ProjetoCardapio.Models.Cliente
+
+@{
+    ViewData["Title"] = "Deletar";
+}
+
+<h1 class="display-5">Deletar</h1>
+<div class="alert alert-danger" role="alert">
+    Tem certeza que deseja deletar o(a) cliente @Html.DisplayFor(model => model.NomeDoCliente)?
+</div>
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeDoCliente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomeDoCliente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumeroDaMesa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumeroDaMesa)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Apagar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-dark">Voltar</a>
+    </form>
+</div>

@@ -1,0 +1,39 @@
+﻿@model ProjetoCardapio.Models.Pedido
+@{
+    ViewData["Title"] = "Detalhes do Pedido";
+}
+
+
+    <h4 class="display-5">Detalhes do pedido @Html.DisplayFor(model => model.Id)</h4>
+    <hr />
+
+<div class="card col-12 mb-3">
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"> <strong>Cliente:</strong> @Model.Cliente?.NomeDoCliente</li>
+        <li class="list-group-item"> <strong>Mesa:</strong> @Model.Cliente?.NumeroDaMesa</li>
+        <li class="list-group-item"><strong>Data do Pedido:</strong> @Model.Data.ToLongDateString()</li>
+        <li class="list-group-item"><strong>Total: </strong>@Model.Total</li>
+    </ul>
+
+</div>
+
+<div class="card col-12 mb-3">
+    <div class="card-header fw-bolder">
+        Itens do pedido
+    </div>
+    @foreach (var pedidoPrato in Model.PedidosPratos)
+    {
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-dark text-white"><strong>Prato:</strong> @pedidoPrato.Prato.NomeDoPrato</li>
+            <li class="list-group-item">Quantidade: @pedidoPrato.Quantidade</li>
+            <li class="list-group-item">Preço do unitário: @pedidoPrato.Prato.Preco</li>
+            <li class="list-group-item">Preço total do item: @(pedidoPrato.Quantidade * pedidoPrato.Prato.Preco)</li>
+            
+    </ul>
+    }
+</div>
+
+
+    <a href="@Url.Action("Index")" class="btn btn-outline-dark">Voltar para a lista de pedidos</a>
+

@@ -1,0 +1,28 @@
+﻿@model ProjetoCardapio.Models.Cliente
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<div>
+    <h4 class="display-5">Detalhes do(a) cliente: @Html.DisplayFor(model => model.NomeDoCliente)</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeDoCliente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomeDoCliente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumeroDaMesa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumeroDaMesa)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-dark">Editar</a>
+    <a asp-action="Index" class="btn btn-dark">Voltar</a>
+</div>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ProjetoCardapio.Models.Prato>
+
+@{
+    ViewData["Title"] = "Pratos";
+}
+
+<h1 class="display-6 text-center">Pratos</h1>
+
+<hr />
+<a href="@Url.Action("Create", "Pratos")" class="btn btn-outline-dark mb-3">Novo Prato</a>
+
+<div class="container">
+    <div class="row">
+        @foreach (var prato in Model)
+        {
+            <div class="col-3 mb-4">
+                
+                <div class="card">
+                    
+                    <img class="card-img-top img-fluid" src="@prato.ImagemUrl" alt="Imagem do Prato" style="max-height: 150px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@prato.NomeDoPrato</h5>
+                        <p class="card-text">@prato.Descricao</p>
+                        <p class="card-text"><strong>@prato.Preco.ToString("C")</strong></p>
+
+                        <a href="@Url.Action("Details", "Pratos", new { id = prato.Id })" class="btn btn-outline-dark">Detalhes</a>
+
+                        <a href="@Url.Action("Edit", "Pratos", new { id = prato.Id })" class="btn btn-outline-dark">Editar</a>
+
+                        <a asp-action="Delete" asp-route-id="@prato.Id" class="btn btn-danger">Deletar</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

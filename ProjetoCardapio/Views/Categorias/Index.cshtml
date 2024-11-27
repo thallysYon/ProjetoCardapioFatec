@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProjetoCardapio.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Lista de Categorias";
+}
+
+<h1 class="display-6 text-center">Categorias</h1>
+
+<hr />
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-dark">Criar</a>
+</p>
+
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeDaCategoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescricaoDaCategoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeDaCategoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescricaoDaCategoria)
+            </td>
+            <td class="col-3">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-dark">Editar</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-dark">Detalhes</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-dark">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

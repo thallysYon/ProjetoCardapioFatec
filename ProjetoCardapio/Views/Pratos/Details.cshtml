@@ -1,0 +1,25 @@
+﻿@model ProjetoCardapio.Models.Prato
+
+@{
+    ViewData["Title"] = "Detalhes do Prato";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card" style="width: 18rem;">
+        @if (!string.IsNullOrEmpty(Model.ImagemUrl))
+        {
+            <img src="@Model.ImagemUrl" class="card-img-top" alt="Imagem do prato" style="height: 200px; object-fit: cover;">
+        }
+        else
+        {
+            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Imagem do prato" style="height: 200px; object-fit: cover;">
+        }
+        <div class="card-body text-center">
+            <h5 class="card-title">@Model.NomeDoPrato</h5>
+            <p class="card-text"><strong>Descrição:</strong> @Model.Descricao</p>
+            <p class="card-text"><strong>Preço:</strong> R$ @Model.Preco.ToString("F2")</p>
+            <a href="@Url.Action("Edit", "Pratos", new { id = Model.Id })" class="btn btn-primary">Editar</a>
+            <a href="@Url.Action("Index", "Pratos")" class="btn btn-secondary">Voltar</a>
+        </div>
+    </div>
+</div>
